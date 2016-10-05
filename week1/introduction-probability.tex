@@ -1,0 +1,597 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Introduction to Probability]{Introduction to Probability} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jamie and Amnon} % Your name
+%\institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+%{
+%University of California \\ % Your institution for the title page
+%\medskip
+%\textit{john@smith.com} % Your email address
+%}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Probability} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Warning}
+\begin{block}{}
+WARNING: This presentation may contain equations known to the State of California to cause cancer and birth defects or other reproductive harm.
+\end{block}
+
+(but they are not really important)
+
+
+We will start slow and formal, and then move faster and less formal.
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Basic concepts} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{What is Probability}
+\begin{itemize}
+\item A nice mathematical framework
+\item Somehow related to the real world:
+\begin{itemize}
+\item We can associate the probability function of an event with the limit of the fraction of times this event will happen when doing an infinite number of repeats.
+\item When a phenomena shows results that are memoryless.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Mathematical Definitions - Sample Space}
+\begin{itemize}
+\item The sample space $\Omega$ is the set of all possible outcomes we measure
+\begin{itemize}
+\item For a coin flip, we can define:
+
+$$ 	\Omega=\{ H,T \} $$
+\item For a balanced, 6-sided die:
+
+$$ \Omega=\{ 1,2,3,4,5,6 \} $$
+\item For flipping 2 coins:
+
+$$ \Omega=\{ HH, HT, TH, TT \} $$
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Mathematical Definitions - Event}
+\begin{itemize}
+\item Events are defined as subsets of $\Omega$:
+$$ E \in 2^{\Omega} $$
+\item Every outcome is an event
+\item An event can be a set of several outcomes
+\item Examples:
+
+In a die roll, an event can be even numbers $$E=\{ 2, 4, 6\}$$
+In two coin flips, an event can be 2 heads:
+$$ E=\{HH\} $$
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Mathematical Definitions - Distribution Function}
+Let $\Omega$ be a Sample Space
+
+The distribution function is defined as:
+$$ m : \Omega \Rightarrow [0,1] $$
+Such that:
+\begin{itemize}
+\item Non negative:
+$$ \forall \omega \in \Omega, \quad m(\omega) \geq 0$$
+\item Sum is 1:
+$$ \sum_{\omega \in \Omega}{m(\omega)} = 1$$
+
+\item Example:
+
+In a fair die roll, $m(1)=m(2)=...=m(6)=\frac{1}{6}$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Mathematical Definitions - Probability Function}
+Let $\Omega$ be a Sample Space
+
+The probability function is an extension of the distribution function.
+
+for a given distribution function $m(\omega)$, we define a probability function:
+$$ P : 2^{\Omega} \Rightarrow [0,1] $$
+Such that:
+$$ \forall E \in 2^{\Omega}, \quad P(E)=\sum_{\omega \in E}{m(\omega)}$$
+\begin{itemize}
+\item Example:
+
+In a fair die roll:
+$$P(\{1\})=m(1)=\frac{1}{6}$$
+$$P(\{2,4,6\})=m(2)+m(4)+m(6)=\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{1}{2}$$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Example - two fair coin tosses}
+\begin{itemize}
+\item The Sample Space is: $\Omega=\{HH,HT,TH,TT\}$
+\item Possible Events are: 
+
+$E = \{HH\}$ (two heads)
+
+$ F = \{HH,TT\}$ (two identical results)
+\item The Distribution Function is: $m(HH)=m(HT)=m(TH)=m(TT)=\frac{1}{4}$
+\item The Probability Function is defined for events:
+
+For $E$ (2 heads), $P(E)=P(\{HH\})=\frac{1}{4}$
+
+For $F$ (two identical results), $P(F)=P(\{HH,TT\}=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Nice properties of probability functions}
+\begin{itemize}
+\item Probability of the complete sample space is 1:
+$$ P(\Omega)=1 $$
+\item Probability of complement is one minus event probability:
+$$ P(\bar{E})=1-P(E) $$
+\item Probability of the union of disjoint events in the sum of their probabilities:
+$$ P(E \cup F)=P(E)+P(F) \quad \text{for } E \cap F = \emptyset $$
+\item HOWEVER, this does NOT always work:
+$$ P(E \cap F)=P(E) \cdot P(F)$$
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Example - nice properties of probability functions}
+For two coin flips:
+\begin{itemize}
+\item The sample space $\Omega=\{HH,HT,TH,TT\}$
+\item Probability of the complete sample space is :
+$$ P(\Omega)=P(\{HH\})+P(\{HT\})+P(\{TH\})+P(\{TT\})=1 $$
+\item Probability of at least one tail:
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Conditional Probability}
+\begin{itemize}
+\item What are the probabilities of events given some event happened?
+\item Example: with a fair die, what is the probability of getting $\{6\}$ given that the results was even?
+
+(Meaning: if we throw the die a lot of times, out of the times that the number was even, what fraction of times was the number 6)
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Mathematical Definition - Conditional Probability}
+\begin{itemize}
+\item For an event $E$, the conditional probability given the event is written as:
+$$P(F|E)$$
+The probability that $F$ happened given that $E$ happened.
+\item It can be shown that:
+$$P(F|E)=\frac {P(F \cap E)}{P(E)}$$
+(IMPORTANT FORMULA)
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
+\frametitle{Examples - Conditional Probability}
+For a 6-sided fair die:
+\begin{itemize}
+\item The probability we get a 6 given the number was even:
+
+$ P(\{6\}|\{2,4,6\})=\frac{P(\{6\} \cap \{2,4,6\})}{P(\{2,4,6\})} = \frac{P(\{6\})}{P(\{2,4,6\})}=\frac{\frac{1}{6}}{\frac{1}{2}}=\frac{1}{3}$
+
+\item The probability we get a 6 given the number was odd:
+
+
+$ P(\{6\}|\{1,3,5\})=\frac{P(\{6\} \cap \{1,3,5\})}{P(\{1,3,5\})}=\frac{P(\emptyset}{P(\{1,3,5\})}=0 $
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Examples - Conditional Probability}
+For 2 coin flips:
+\begin{itemize}
+\item The probability we get 2 similar results given the first was head:
+$$ P(\{HH,TT\}|\{HH,HT\})=\frac{P(\{HH,TT\} \cap \{HH,HT\})}{P(\{HH,HT\})} =$$ $$=\frac{P(\{HH\})}{P(\{HH,HT\})}=\frac{\frac{1}{4}}{\frac{1}{2}}=\frac{1}{2}$$
+
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Complicated Example - Conditional Probability}
+A rare and lethal disease with a prevalence of 0.1\% of the population. 
+
+Luckily, we have a test with 99\% accuracy (so if you have the disease, 99\% of the times the test will return positive, and if you are healthy, 99\% of the times the test will return negative
+
+Unfortunately, you tested positive for the disease. What is the probability you actually have it?
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Complicated Example - Conditional Probability}
+Denote $H$ for healthy, $S$ for sick, $P$ for test positive and $N$ for test negative.
+
+We have:
+\begin{itemize}
+\item $\Omega=\{HP,HN,SP,SN\}$
+\item $P(\{SP,SN\})=0.001$
+\item $P(\{SP\}|\{SP,SN\})=0.99$
+\item $P(\{HN\}|\{HP,HN\})=0.99$
+\end{itemize}
+What is $P(\{SP,SN\}|\{SP,HP\})$?
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Complicated Example - Conditional Probability}
+$$P(\{HN\}|\{HP,HN\})=0.99$$ $$\Downarrow$$ $$P(\{HN\})=0.99 \cdot P(\{HP,HN\})=0.99 \cdot (1-0.001) \approx 0.99$$ $$\Downarrow$$ $$P(\{HP\}) \approx 1-0.99=0.01$$
+and
+$$P(\{SP\}|\{SP,SN\})=0.99$$ $$\Downarrow$$ $$P(\{SP\})=0.99 \cdot P(\{SP,SN\})=0.99 \cdot 0.001 \approx 0.001$$
+therefore:
+$$P(\{SP,SN\}|\{SP,HP\})=\frac{(\{SP\}}{P(\{SP,HP\}}=\frac{0.001}{0.001+0.01}=0.1 $$
+
+So we still have hope (only 10\% of being sick)
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Random Variables}
+\begin{itemize}
+\item A random variable is "a quantity whose value depends in some clearly-defined way on a set of possible random events".
+\item Usually denoted by capital letters (i.e. X,Y)
+\item For every repeat/world manifestation, the random variable gets a value
+\item Can have several random variables. The value each random variable gets are from the same repeat.
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Example - Random Variables}
+for throwing 2 dice
+\begin{itemize}
+\item W is defined as the sum of the 2 dice
+\item X is defined as the value of the first die
+\item Y is defined as the value of the second die
+\item Z is defined as 1 if the 2 dice are equal, 0 if they are different
+\end{itemize}
+
+For a given repeat, say we got the values 4,5 in our 2 dice. Then we have:
+\begin{itemize}
+\item $W=9$
+\item $X=4$
+\item $Y=5$
+\item $Z=0$
+\end{itemize}
+
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Mathematical Definition - Independence}
+Two random variables are said to be independent if the value we get for one do not change the probability function of the other:
+
+Definition:
+
+X,Y are independent if:
+$$P(Y|X)=P(Y) \quad \forall x \in X$$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Example - Independence}
+from the previous example (for throwing 2 dice)
+\begin{itemize}
+\item W is defined as the sum of the 2 dice
+\item X is defined as the value of the first die
+\item Y is defined as the value of the second die
+\item Z is defined as 1 if the 2 dice are equal, 0 if they are different
+\end{itemize}
+
+We have
+\begin{itemize}
+\item W and X are dependent (i.e. if the sum is 12, both dice must be 6)
+\item W and Y are dependent (i.e. if the sum is 12, both dice must be 6)
+\item X and Y are independent (the value of one die will not affect the other)
+\item are W and Z dependent?
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Example - Independence}
+The indepedence of two random variables also depends on the sample space they are in.
+
+For example (WITH BACTERIA!):
+Choose two people (A and B) from the world and look at the level of Streptococcus in their saliva (denote $S_A$ and $S_B$).
+\begin{itemize}
+\item If B is chosen independently of A, $S_A$ and $S_B$ are independent.
+\item If B is always chosen as the same individual as A, $S_A$ and $S_B$ are dependent
+\item However, if we're only looking at a time series of one individual (so we randomly choose A and B from samples of a time series of one individual), $S_A$ and $S_B$ are independent again.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Independence and Probability}
+An important property of independent random variables is:
+$$ P(X \text{ and } Y) = P(X) \cdot P(Y) \quad \text{for X,Y independent}$$
+(The probability of $X=x$ and $Y=y$ is the product of the probabilities of $P(X=x)$ and $P(Y=y)$
+
+This can be easily derived since we know:
+$$ P(X|Y)=\frac{P(X \text{ and } Y)}{P(Y)}$$ and $$P(X|Y)=P(X)$$
+
+Quick note: we can define also an independence for a group of random variables, and in theory it's not enough that only all pairs in the group are independent (but usually it's close enough)
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Mathematical Definition - Expectation}
+If you are a (smart) gambler in a casino, you would like to play games that will let you win money on the long run.
+
+The average winning over a large number of repeats is:
+$$ \sum_{\text{result} \in \text{game}}{P(\text{result}) \cdot \text{Gain}(\text{result}})$$
+Since we have the relation between probability and real life, we define:
+
+For a numeric random variable $X$, the Expectation of $X$ is:
+$$ E(X)=\sum_{x \in X}{P(X) \cdot X}$$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Expectation - Properties}
+\begin{itemize}
+\item Additivity : $E(X+Y)=E(X)+E(Y)$
+\item Linearity : $E(c \cdot X)=c \cdot E(X)$ for any number $c$
+\end{itemize}
+Example:
+
+If you play a game where we toss a fair die and then:
+\begin{itemize}
+\item if the result is even you get 1\$ if it's odd you lose 2\$
+\item if the result is '1', you gain 5\$ otherwise you don't get anything
+\end{itemize}
+What is your avergae gain/loss over a lot of games?
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Mathematical Definition - Variance and Standard Deviation}
+Another thing that may interest us is how much the results vary from the mean.
+
+A useful (but not only) way to quantify it is using Variance:
+$$ V(X)= \sum_{x \in X}{P(x) \cdot (x-E(X))^2} = E[(X-E(X)^2]$$
+
+and we define the standard deviation as the square root of the variance:
+$$ std(X)=\sqrt[]{V(X)}$$
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Example - Variance and Standard Deviation}
+\begin{itemize}
+\item If we flip a coin, X is 2 if it is head, 0 if tail:
+\begin{itemize}
+\item $E(X)=0.5 \cdot 2 + 0.5 \cdot (0)=1$
+\item $V(X)=0.5 \cdot (2-1)^2 + 0.5 \cdot (0-1)^2=1$
+\item $std(X)=\sqrt{V(X)}=\sqrt{1}=1$
+\item and a lot of time we're interested in the relative level of fluctuations
+
+$\frac{std(X)}{E(X)}=\frac{1}{1}=1$
+\end{itemize}
+\item If we flip a coin again, but now X is 20 if it is head, 0 if tail:
+\begin{itemize}
+\item $E(X)=0.5 \cdot 20 + 0.5 \cdot (0)=10$
+\item $V(X)=0.5 \cdot (20-10)^2 + 0.5 \cdot (0-10)^2=100$
+\item $std(X)=\sqrt{V(X)}=\sqrt{1}=10$
+\item relative level of fluctuations
+
+$\frac{std(X)}{E(X)}=\frac{10}{10}=1$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Distributions}
+A lot of random variables have similar probability structures for their events (and therefore enable similar mathematical analysis and have similar properties).
+
+We can group them into families called Distributions
+
+Examples:
+\begin{itemize}
+\item Tossing a fair coin
+\item Throwing a fair 6 sided die, is the result even or odd
+\item The sex of a random person in the world
+\item Throwing a fair 6 sided die, is the result '6'
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Binomial Distribution}
+The random variable examples from the previous all have a Binary distribution.
+We have two possible outcomes (denote them A and B)
+
+The probability of getting A is denoted by $P(A)$
+
+The probability of getting B is $1-P(A)$
+
+In a Binomial distribution, we repeat a binary trial $n$ times and count how many $A$ we get.
+
+\begin{itemize}
+\item See ipython notebook!
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Multinomial Distribution}
+\begin{itemize}
+\item See ipython notebook
+\item also relevant to REAL MICROBIOME experiments!
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Normal Distribution and Central limit theorem}
+The sum of a lot of INDEPENDENT random variables always goes to the same distribution
+
+It is called the Normal Distribution
+
+Happens a lot in nature.
+
+See IPython notebook
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
