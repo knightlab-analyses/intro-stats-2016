@@ -11,3 +11,5 @@ pip install qiime_default_reference biom
 ```
 
 Now we can start working through the distance metrics notebooks.
+
+The slides for this session can be [found here](https://docs.google.com/presentation/d/1yq9KkP_Wq6gjP4XQ04UsuYCBwy6aWOI63xB_S4PhAgU/edit?usp=sharing).
